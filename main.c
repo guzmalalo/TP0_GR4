@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <allegro5/allegro5.h>
-#define  ALEATOIRE al_map_rgb(rand()%255, rand()%255, rand()%255)
+#define  ALEATOIRE al_map_rgb(rand()%256, rand()%256, rand()%256)
 
 int main() {
     // seed
@@ -34,13 +34,15 @@ int main() {
         al_wait_for_event(fifo, &event);
         switch (event.type) {
             case ALLEGRO_EVENT_DISPLAY_CLOSE:
-                printf("Tu as cliqué sur fermer");
+                printf("Tu as cliqué sur fermer\n");
                 fini= false;
                 break;
             case ALLEGRO_EVENT_DISPLAY_RESIZE:
                 printf("Tu as changé la taille de la fenetre\n");
                 break;
             case ALLEGRO_EVENT_TIMER:
+                // ou 
+                //aleatoire = al_map_rgb(rand()%256, rand()%256, rand()%256);
                 al_clear_to_color(ALEATOIRE);
                 al_flip_display();
                 break;
